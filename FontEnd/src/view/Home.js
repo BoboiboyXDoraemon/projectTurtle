@@ -7,17 +7,18 @@ import {Box,Button, Avatar, Card, CardMedia,  Typography} from '@mui/material'
 
 const fetcher = url => axios.get(url).then(res => res.data)
 
-const Headers =() => {
-    <div>
-        <Box sx={{display:"flex",flexDirection:"row"}}>
-        <Button onClick={()=>{setDt({})}}>Logout</Button>
-        </Box> 
-    </div>
-}
+
 const Home = () => {
     const {dt,setDt} = useValue()
     const { data, error } = useSWR('https://3000-boboiboyxdo-projectturt-b2z9aw2gc5p.ws-us78.gitpod.io/', fetcher)
-    
+    const Headers = (
+        <Box sx={{display:"flex",flexDirection:"row"}} >
+        <Button onClick={()=>{setDt({})}}>Logout</Button>
+        </Box> 
+    )
+    const View = (
+        Headers
+    )
     if (error) return <h1>error: {error.message}</h1>
     if (!data) return <h1>Loading...</h1>
 
@@ -30,7 +31,7 @@ const Home = () => {
         <Button onClick={()=>{setDt({})}}>Logout</Button>
         </Box> 
         : 
-        <Headers/>
+        View
     }
     <Box sx={{display:"flex", flexDirection:"row", flexWrap:"wrap"}}>
         {
