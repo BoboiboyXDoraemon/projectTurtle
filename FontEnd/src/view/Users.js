@@ -7,9 +7,13 @@ import {Box,Button, Avatar} from '@mui/material'
 
 const Users = () => {
     const {dt,setDt} = useValue()
+    if(dt && dt.username)
+    {
+
+    }
     const fetcher = url => axios.get(url, { headers: { authorization: `Bearer ${dt.token}` }}).then(res => res.data)
 
-    const { data, error } = useSWR('https://3000-boboiboyxdo-projectturt-b2z9aw2gc5p.ws-us78.gitpod.io/users', fetcher)
+    const { data, error } = useSWR('https://3000-boboiboyxdo-projectturt-b2z9aw2gc5p.ws-us79.gitpod.io/users', fetcher)
     
     if (error) return <h1>error: {error.message}</h1>
     if (!data) return <h1>Loading...</h1>
